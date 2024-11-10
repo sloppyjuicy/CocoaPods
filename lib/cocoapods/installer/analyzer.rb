@@ -84,6 +84,7 @@ module Pod
         @installation_options = podfile.installation_options
         @podfile_dependency_cache = PodfileDependencyCache.from_podfile(podfile)
         @sources_manager = sources_manager
+        @path_lists = {}
         @result = nil
       end
 
@@ -125,7 +126,7 @@ module Pod
         validate_platforms(resolver_specs_by_target)
         specifications = generate_specifications(resolver_specs_by_target)
         aggregate_targets, pod_targets = generate_targets(resolver_specs_by_target, target_inspections)
-        sandbox_state   = generate_sandbox_state(specifications)
+        sandbox_state = generate_sandbox_state(specifications)
         specs_by_target = resolver_specs_by_target.each_with_object({}) do |rspecs_by_target, hash|
           hash[rspecs_by_target[0]] = rspecs_by_target[1].map(&:spec)
         end
@@ -830,7 +831,10 @@ module Pod
       def create_file_accessors(specs, platform)
         name = specs.first.name
         pod_root = sandbox.pod_dir(name)
-        path_list = Sandbox::PathList.new(pod_root)
+        path_list = @path_lists.fetch(pod_root) do |root|
+          path_list = Sandbox::PathList.new(root)
+          @path_lists[root] = path_list
+        end
         specs.map do |spec|
           Sandbox::FileAccessor.new(path_list, spec.consumer(platform))
         end

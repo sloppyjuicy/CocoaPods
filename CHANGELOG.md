@@ -8,6 +8,232 @@ To install release candidates run `[sudo] gem install cocoapods --pre`
 
 ##### Enhancements
 
+* None.  
+
+##### Bug Fixes
+
+* Update ruby-macho to 4.1.0 to address new mergable libraries not beind detected correctly.  
+    [Parsa Nasirimehr](https://github.com/TheRogue76)
+    [#12691](https://github.com/CocoaPods/CocoaPods/pull/12691)
+
+
+## 1.16.2 (2024-10-31)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* Bump min xcodeproj to 1.27.0 to include revert of breaking build setting changes.  
+  [Eric Amorde](https://github.com/amorde)
+  [#12675](https://github.com/CocoaPods/CocoaPods/pull/12675)
+
+
+## 1.16.1 (2024-10-29)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* Fix an issue breaking `pod lib lint` / `pod spec lint` due to new `ENABLE_USER_SCRIPT_SANDBOXING` setting.  
+  [Eric Amorde](https://github.com/amorde)
+  [#12664](https://github.com/CocoaPods/CocoaPods/issues/12664)
+
+
+## 1.16.0 (2024-10-29)
+
+##### Enhancements
+
+* Add Support for Xcode 14.3's ENABLE_MODULE_VERIFIER.  
+  [sharplet](https://github.com/sharplet)
+  [#12390](https://github.com/CocoaPods/CocoaPods/pull/12390)
+
+* Xcode 16 support.
+  * Bump minimum `xcodeproj` to `1.26.0`
+  * Update project generator to set `GENERATE_INFOPLIST_FILE = NO` on pod targets
+  * Update project generator to set `ENABLE_USER_SCRIPT_SANDBOXING = NO` = NO` on pod targets to fix build failures with vendored frameworks.  
+  * Update project generator to set `SWIFT_INSTALL_OBJC_HEADER = YES` on pod targets to enable consuming Swift pods from Objective-C.
+
+[Eric Amorde](https://github.com/amorde)
+[#12656](https://github.com/CocoaPods/CocoaPods/pull/12656)
+
+##### Bug Fixes
+
+* Fix pod install issue when git's `core.fsmonitor` feature is enabled (again)  
+  [Justin Martin](https://github.com/justinseanmartin)
+  [#12349](https://github.com/CocoaPods/CocoaPods/issues/12349)
+
+
+## 1.15.2 (2024-02-06)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* Revert #12154, #12165, and #12158 to fix regressions in 1.15.0 and 1.15.1.  
+  [Paul Beusterien](https://github.com/paulb777)
+  [#12226](https://github.com/CocoaPods/CocoaPods/issues/12226)
+
+## 1.15.1 (2024-02-06)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* Fix an issue when caching downloads of certain Pods.  
+  [Eric Amorde](https://github.com/amorde)
+  [#12226](https://github.com/CocoaPods/CocoaPods/issues/12226)
+
+
+## 1.15.0 (2024-01-28)
+
+##### Enhancements
+
+* Optimize performance during uncached pod installation.  
+  [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
+  [#12154](https://github.com/CocoaPods/CocoaPods/pull/12154)
+
+##### Bug Fixes
+
+* Fix pod install issue when git's `core.fsmonitor` feature is enabled  
+  [Justin Martin](https://github.com/justinseanmartin)
+  [#11640](https://github.com/CocoaPods/CocoaPods/issues/11640)
+
+* Don't use the `remove_destination` parameter in FileUtils.cp_r  
+  [Justin Martin](https://github.com/justinseanmartin)
+  [#12165](https://github.com/CocoaPods/CocoaPods/pull/12165)
+
+* Support `visionos` in `pod lib lint --platforms=` and use `xros` for `Fourflusher`  
+  [MagnificentMiles](https://github.com/MagnificentMiles)
+  [#12159](https://github.com/CocoaPods/CocoaPods/pull/12159)
+
+## 1.14.3 (2023-11-19)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* Revert minimum required Ruby version to 2.6 to support macOS system Ruby  
+  [Eric Amorde](https://github.com/amorde)
+  [#12122](https://github.com/CocoaPods/CocoaPods/issues/12122)
+
+## 1.14.2 (2023-10-27)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* None.  
+
+
+## 1.14.1 (2023-10-26)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* None.  
+
+
+## 1.14.0 (2023-10-26)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* Fix a crash when running with activesupport 7.1.0.  
+  [MCanhisares](https://github.com/MCanhisares)
+  [#12081](https://github.com/CocoaPods/CocoaPods/issues/12081)
+
+* Fix another crash when running with activesupport 7.1.0.  
+  [movila](https://github.com/movila)
+  [#12089](https://github.com/CocoaPods/CocoaPods/issues/12089)
+
+##### Other
+
+* Drop support for `bazaar` SCM  
+
+
+## 1.13.0 (2023-09-22)
+
+##### Enhancements
+
+* Add `visionOS` as a new platform.  
+  [Gabriel Donadel](https://github.com/gabrieldonadel)
+  [#11965](https://github.com/CocoaPods/CocoaPods/pull/11965)
+
+* Extend `script_phase` DSL to support `always_out_of_date` attribute.  
+  [Alvar Hansen](https://github.com/alvarhansen)
+  [#12055](https://github.com/CocoaPods/CocoaPods/pull/12055)
+
+##### Bug Fixes
+
+* Use `safe_load` during custom YAML config loading.  
+  [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
+  [#11974](https://github.com/CocoaPods/CocoaPods/pull/11974)
+
+* Xcode 15 fix: Replace `DT_TOOLCHAIN_DIR` with `TOOLCHAIN_DIR` when generating script.  
+  [Marcus Wu](https://github.com/marcuswu0814)
+  [#12009](https://github.com/CocoaPods/CocoaPods/pull/12009)
+
+## 1.12.1 (2023-04-18)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* Xcode 14.3 fix: Pass the -f option when resolving the path to the symlinked source.  
+  [Chris Vasselli](https://github.com/chrisvasselli)
+  [#11828](https://github.com/CocoaPods/CocoaPods/pull/11828)
+  [#11808](https://github.com/CocoaPods/CocoaPods/issues/11808)
+
+* Fix typo in validation for `--validation-dir` help message  
+  [Austin Evans](https://github.com/ajevans99)
+  [#11857](https://github.com/CocoaPods/CocoaPods/issues/11857)
+
+* Xcode 14.3 fix: `pod lib lint` warning generation from main.m.  
+  [Paul Beusterien](https://github.com/paulb777)
+  [#11846](https://github.com/CocoaPods/CocoaPods/issues/11846)
+
+## 1.12.0 (2023-02-27)
+
+##### Enhancements
+
+* Add ability to specify the `validation-dir` during `lint`.  
+  [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
+  [#11773](https://github.com/CocoaPods/CocoaPods/pull/11773)
+
+* Correctly handle `.docc` documentation in source_files.  
+  [haifengkao](https://github.com/haifengkao)
+  [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
+  [#11438](https://github.com/CocoaPods/CocoaPods/pull/11438)
+  [#10885](https://github.com/CocoaPods/CocoaPods/issues/10885)
+
+* Re-use the same path lists for pods that share the same root.  
+  [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
+  [#11417](https://github.com/CocoaPods/CocoaPods/pull/11417)
+
+* Integrate `parallelizable` scheme DSL option.  
+  [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
+  [#11399](https://github.com/CocoaPods/CocoaPods/pull/11399)
+
 * Use `${DEVELOPMENT_LANGUAGE}` as the default `CFBundleDevelopmentRegion` value in any generated `Info.plist`.  
   [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
   [#10950](https://github.com/CocoaPods/CocoaPods/pull/10950)
@@ -24,7 +250,19 @@ To install release candidates run `[sudo] gem install cocoapods --pre`
   [Seth Friedman](https://github.com/sethfri)
   [#11232](https://github.com/CocoaPods/CocoaPods/pull/11232)
 
+* Include subprojects in the plugin post-install hook context  
+  [Eric Amorde](https://github.com/amorde)
+  [#11224](https://github.com/CocoaPods/CocoaPods/pull/11224)
+
+* Ensure the order of slices passed to the `install_xcframework` script (in the "Copy XCFrameworks" script build phase) is stable.  
+  [Olivier Halligon](https://github.com/AliSoftware)
+  [#11707](https://github.com/CocoaPods/CocoaPods/pull/11707)
+
 ##### Bug Fixes
+
+* Fix incremental installation when a development pod is deleted.  
+  [John Szumski](https://github.com/jszumski)
+  [#11438](https://github.com/CocoaPods/CocoaPods/pull/11681)
 
 * Clean sandbox when a pod switches from remote to local.  
   [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
@@ -41,6 +279,43 @@ To install release candidates run `[sudo] gem install cocoapods --pre`
 * Add .gitignores to the banana and snake fixtures  
   [Seth Friedman](https://github.com/sethfri)
   [#11235](https://github.com/CocoaPods/CocoaPods/pull/11235)
+
+* Fix publishing podspecs with watchOS support on Xcode 14  
+  [Justin Martin](https://github.com/justinseanmartin)
+  [#11660](https://github.com/CocoaPods/CocoaPods/pull/11660)
+
+## 1.11.3 (2022-03-16)
+
+##### Enhancements
+
+* None.  
+
+##### Bug Fixes
+
+* Fix script breaking when attempting to print a warning.  
+  [Igor Makarov](https://github.com/igor-makarov)
+  [#11251](https://github.com/CocoaPods/CocoaPods/issues/11251)
+
+* Do not consider podspec_repo when analying sandbox for changes.  
+  [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
+  [#10985](https://github.com/CocoaPods/CocoaPods/pull/10985)
+
+* Rewrite XCFramework slice selection using plist metadata.  
+  [Igor Makarov](https://github.com/igor-makarov)
+  [#11229](https://github.com/CocoaPods/CocoaPods/pull/11229)
+
+* Fix setting `LD_RUNTIME_SEARCH_PATHS` for aggregate targets that include dynamic xcframeworks.  
+  [Dimitris Koutsogiorgas](https://github.com/dnkoutso)
+  [#11158](https://github.com/CocoaPods/CocoaPods/pull/11158)
+
+* Add catch for YAML syntax error to prevent crash in `cdn_url?` check.  
+  [Kanstantsin Shautsou](https://github.com/KostyaSha)
+  [#11010](https://github.com/CocoaPods/CocoaPods/issues/11010)
+
+* Fix static Swift XCFramework import paths.  
+  [Igor Makarov](https://github.com/igor-makarov)
+  [#11058](https://github.com/CocoaPods/CocoaPods/issues/10058)
+  [#11093](https://github.com/CocoaPods/CocoaPods/pull/11093)
 
 ## 1.11.2 (2021-09-13)
 
